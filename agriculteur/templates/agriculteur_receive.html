@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Agriculteur - reception{% endblock %}
+
+{% block body %}
+    <div>
+        {% include 'sidebar.html' %}
+
+        <div class="md:pl-64 flex flex-col flex-1">
+            <main class="flex-1">
+                <div class="py-6">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <h1 class="text-2xl font-semibold text-gray-900">Agriculteur</h1>
+                    </div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <div class="py-4">
+                            <div id="content"></div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const ws = new WebSocket('ws://192.168.43.208:15674/ws');
+        const client = Stomp.over(ws);
+
+        client.connect('cansa', 'cansa', function (frame) {
+            console.log('Connected: ' + frame);
+            client.subscribe('/exchange/direct_exchange/consommateur', function (message) {
+                console.log(message);
+                const data = JSON.stringify(JSON.parse(message.body));
+                document.getElementById('content').innerHTML += `<code>${data}</code>`;
+            });
+        });
+    </script>
+{% endblock %}

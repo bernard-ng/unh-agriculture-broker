@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% block title %}Agriculteur - publication{% endblock %}
+
+{% block body %}
+    <div>
+        {% include 'sidebar.html' %}
+
+        <div class="md:pl-64 flex flex-col flex-1">
+            <main class="flex-1">
+                <div class="py-6">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <h1 class="text-2xl font-semibold text-gray-900">Agriculteur</h1>
+                    </div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <div class="py-4">
+                            <form class="space-y-8 divide-y divide-gray-200">
+                                <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                                    <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="sensor_data" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Données de capteurs agricoles</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <textarea id="sensor_data" name="sensor_data" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md">{{ json_data }}</textarea>
+                                            </div>
+                                        </div>
+
+                                         <div>
+                                            <h3 class="text-lg leading-6 font-medium text-gray-900">Informations sur les cultures</h3>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="parcelle_id" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Parcelle ID</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="parcelle_id" name="informations[parcelle_id]" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="PAR001">PAR001</option>
+                                                    <option value="PAR002">PAR002</option>
+                                                    <option value="PAR003">PAR003</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="culture" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Culture</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="culture" name="informations[culture]" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                     <option value="Blé">Blé</option>
+                                                     <option value="Maïs">Maïs</option>
+                                                     <option value="Orge">Orge</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="variete" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Culture</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="variete" name="informations[variete]" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                     <option value="Blé tendre">Blé tendre</option>
+                                                     <option value="Maïs doux">Maïs doux</option>
+                                                     <option value="Orge d'hiver">Orge d'hiver</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="date_plantation" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Date de plantation</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input type="date" name="informations[date_plantation]" id="date_plantation" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="type" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Culture</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="type" name="informations[techniques_culturales][type]" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="Agriculture raisonnée">Agriculture raisonnée</option>
+                                                    <option value="Agriculture biologique">Agriculture biologique</option>
+                                                    <option value="Agriculture conventionnelle">Agriculture conventionnelle</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="fertilisation" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Fertilisation</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="fertilisation" name="informations[techniques_culturales][fertilisation]" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="Engrais organique">Engrais organique</option>
+                                                    <option value="Engrais chimique">Engrais chimique</option>
+                                                    <option value="Pas de fertilisation">Pas de fertilisation</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="irrigation" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Irrigation</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="irrigation" name="informations[techniques_culturales][irrigation]" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="Goutte-à-goutte">Goutte-à-goutte</option>
+                                                    <option value="Arrosage par aspersion">Arrosage par aspersion</option>
+                                                    <option value="Irrigation par gravité">Irrigation par gravité</option>
+                                                </select>
+                                            </div>
+                                         </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="traitements_phytosanitaires" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Traitements phytosanitaires</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="traitements_phytosanitaires" name="traitements_phytosanitaires[]" multiple class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="Fongicide A">Fongicide A</option>
+                                                    <option value="Fongicide B">Fongicide B</option>
+                                                    <option value="Insecticide C">Insecticide C</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="rendement_attendu_valeur" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Rendement attendu (valeur)</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input type="number" name="rendement_attendu_valeur" id="rendement_attendu_valeur" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="rendement_attendu_unite" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Rendement attendu (unité)</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="rendement_attendu_unite" name="rendement_attendu_unite" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="quintaux par hectare">quintaux par hectare</option>
+                                                    <option value="tonnes par hectare">tonnes par hectare</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="agriculteur_id" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">ID de l'agriculteur</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input type="text" name="agriculteur_id" id="agriculteur_id" value="XYZ789" readonly class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h3 class="text-lg leading-6 font-medium text-gray-900">Informations sur les cultures</h3>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="culture" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Culture</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="culture" name="culture" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                   <option value="Maïs">Maïs</option>
+                                                    <option value="Blé">Blé</option>
+                                                    <option value="Riz">Orge</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-2">
+                                            <label for="annee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Année</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input type="number" name="annee" id="annee" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-2">
+                                            <label for="zone_production" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Zone de production</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="zone_production" name="zone_production[]" multiple class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="Région A">Région A</option>
+                                                    <option value="Région B">Région B</option>
+                                                    <option value="Région C">Région C</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-2">
+                                            <label for="quantite_recoltee" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Quantité récoltée</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input type="number" name="quantite_recoltee[]" id="quantite_recoltee" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-2">
+                                            <label for="unite_quantite" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Zone de production</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="unite_quantite" name="unite_quantite[]" multiple class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                   <option value="tonnes">Tonnes</option>
+                                                    <option value="kilogrammes">Kilogrammes</option>
+                                                    <option value="litres">Litres</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-2">
+                                            <label for="debut" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Début</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input type="date" name="periode_recolte_debut[]" id="debut" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-2">
+                                            <label for="fin" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Fin</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input type="date" name="periode_recolte_fin[]" id="fin" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="pt-5">
+                                    <div class="flex justify-end">
+                                        <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            Publier
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}

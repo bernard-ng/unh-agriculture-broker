@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire Marché Agricole</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #a1a0a0, #ffffff);
+      color: #333333;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-control {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 5px;
+      color: #333333;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-publish {
+      background-color: #333333;
+      color: #ffffff;
+      border-radius: 5px;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      margin-top: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center mb-4">Formulaire Marché Agricole</h2>
+    <form method="post">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="prix_marche_produit">Prix du marché :</label>
+
+        <div id="prix_marche_produit">
+          <label for="produit">Produit :</label>
+          <select class="form-control" id="produit" name="produit">
+            <option value="Blé">Blé</option>
+            <option value="Maïs">Maïs</option>
+            <option value="Riz">Riz</option>
+            <option value="Avoine">Avoine</option>
+            <!-- Ajoutez d'autres options ici si nécessaire -->
+          </select>
+
+          <label for="date">Date :</label>
+          <input type="date" class="form-control" id="date" name="date" value="2023-12-28">
+
+          <label for="prix">Prix moyen :</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="prix" name="prix" value="250">
+            <div class="input-group-append">
+              <span class="input-group-text">€/tonne</span>
+            </div>
+          </div>
+
+          <label for="tendance">Tendance :</label>
+          <select class="form-control" id="tendance" name="tendance">
+            <option value="stable">Stable</option>
+            <option value="en hausse">En hausse</option>
+            <option value="en baisse">En baisse</option>
+          </select>
+
+          <label for="source">Source :</label>
+          <input type="text" class="form-control" id="source" name="source" value="Marché Agricole Central">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="disponibilite_produits">Disponibilité des produits :</label>
+
+        <div id="disponibilite_produits">
+          <label for="produits">Produit :</label>
+          <select class="form-control" id="produits" name="produits">
+            <option value="Tomates">Tomates</option>
+            <option value="Pommes">Pommes</option>
+            <option value="Poires">Poires</option>
+            <option value="Oranges">Oranges</option>
+            <!-- Ajoutez d'autres options ici si nécessaire -->
+          </select>
+
+          <label for="dates">Date :</label>
+          <input type="date" class="form-control" id="dates" name="dates" value="2023-12-28">
+
+          <label for="quantite_disponible">Quantité disponible :</label>
+          <div class="input-group">
+            <input type="number" class="form-control" id="quantite_disponible" name="quantite_disponible" value="5000">
+            <div class="input-group-append">
+              <span class="input-group-text">kg</span>
+            </div>
+          </div>
+
+          <label for="offres_speciales">Offres spéciales :</label>
+          <select class="form-control" id="offres_speciales" name="offres_speciales">
+            <option value="Réduction de 20% de plus de 1000 kg.">Réduction de 20% de plus de 1000 kg.</option>
+            <option value="Livraison gratuite de plus de 2000 kg.">Livraison gratuite de plus de 2000 kg.</option>
+            <!-- Ajoutez d'autres options ici si nécessaire -->
+          </select>
+
+          <label for="mois_precedent">Volumes vendus (Mois précédent) :</label>
+          <input type="number" class="form-control" id="mois_precedent" name="mois_precedent" value="3000">
+
+          <label for="mois_actuel">Volumes vendus (Mois actuel) :</label>
+          <input type="number" class="form-control" id="mois_actuel" name="mois_actuel" value="2000">
+
+          <label for="unite_quantite">Unité de quantité :</label>
+          <select class="form-control" id="unite_quantite" name="unite_quantite">
+            <option value="kg">kg</option>
+            <option value="tonne">tonne</option>
+            <!-- Ajoutez d'autres options ici si nécessaire -->
+          </select>
+
+          <label for="sources">Source :</label>
+          <input type="text" class="form-control" id="sources" name="sources" value="Marché Agricole Régional">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="demande_marche">Demande du marché :</label>
+
+        <div id="demande_marche">
+          <label for="produit2">Produit :</label>
+          <select class="form-control" id="produit2" name="produit2">
+            <option value="Tomates">Tomates</option>
+            <option value="Pommes" selected>Pommes</option>
+            <option value="Poires">Poires</option>
+            <option value="Oranges">Oranges</option>
+            <!-- Ajoutez d'autres options ici si nécessaire -->
+          </select>
+
+          <label for="date2">Date :</label>
+          <input type="date" class="form-control" id="date2" name="date2" value="2023-12-28">
+
+          <label for="niveau_actuel">Niveau de demande actuel :</label>
+          <select class="form-control" id="niveau_actuel" name="niveau_actuel">
+            <option value="Faible">Faible</option>
+            <option value="Moyen">Moyen</option>
+            <option value="Élevé" selected>Élevé</option>
+            <!-- Ajoutez d'autres options ici si nécessaire -->
+          </select>
+
+          <label for="prevision">Prévision de la demande :</label>
+          <select class="form-control" id="prevision" name="prevision">
+            <option value="Baisse">Baisse</option>
+            <option value="Stable" selected>Stable</option>
+            <option value="Augmentation">Augmentation</option>
+            <!-- Ajoutez d'autres options ici si nécessaire -->
+          </select>
+
+          <label for="source2">Source :</label>
+          <input type="text" class="form-control" id="source2" name="source2" value="Association des Distributeurs de Fruits">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-publish">Publier Marché Agricole</button>
+    </form>
+  </div>
+</body>
+</html>

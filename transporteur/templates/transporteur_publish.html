@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr
+">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire Transporteur</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #a1a0a0, #ffffff);
+      color: #333333;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-control {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 5px;
+      color: #333333;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-publish {
+      background-color: #333333;
+      color: #ffffff;
+      border-radius: 5px;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      margin-top: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center mb-4">Formulaire Transporteur</h2>
+    <form method="post">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="informations_logistiques">informations logistiques :</label>
+          </div>
+      <div class="form-group">
+        <label for="produit">Produit :</label>
+        <select class="form-control" id="produit" name="produit">
+          <option value="Fruits">Fruits</option>
+          <option value="Légumes">Légumes</option>
+          <option value="Céréales">Céréales</option>
+          <option value="Herbes aromatiques">Herbes aromatiques</option>
+          <option value="Produits laitiers">Produits laitiers</option>
+          <option value="Œufs">Œufs</option>
+          <option value="Miel">Miel</option>
+          <option value="Viandes">Viandes</option>
+          <!-- Ajoutez d'autres options ici si nécessaire -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Date :</label>
+        <input class="form-control" type="date" id="date" name="date" >
+      </div>
+      <div class="form-group">
+        <label for="informations_logistiques">informations_logistiques :</label>
+          </div>
+      <div class="form-group">
+        <label for="horaires_livraison">Horaires de livraison :</label>
+        <select class="form-control" id="horaires_livraison" name="horaires_livraison">
+          <option value="De 8h00 à 18h00 du lundi au vendredi">De 8h00 à 18h00 du lundi au vendredi</option>
+          <option value="De 9h00 à 17h00 du lundi au vendredi">De 9h00 à 17h00 du lundi au vendredi</option>
+          <option value="De 7h00 à 19h00 du lundi au samedi">De 7h00 à 19h00 du lundi au samedi</option>
+          <option value="24/7 (24 heures sur 24, 7 jours sur 7)">24/7 (24 heures sur 24, 7 jours sur 7)</option>
+          <!-- Ajoutez d'autres options ici si nécessaire -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="conditions_stockage">Conditions de stockage :</label>
+        <select class="form-control" id="conditions_stockage" name="conditions_stockage">
+          <option value="Température contrôlée entre 2°C et 8°C">Température contrôlée entre 2°C et 8°C</option>
+          <option value="Température contrôlée entre 0°C et 4°C">Température contrôlée entre 0°C et 4°C</option>
+          <option value="Température ambiante">Température ambiante</option>
+          <option value="Congélation à -18°C">Congélation à -18°C</option>
+          <!-- Ajoutez d'autres options ici si nécessaire -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="route">Route :</label>
+        <select class="form-control" id="route" name="route">
+          <option value="Disponible">Disponible</option>
+          <option value="Limité">Limité</option>
+          <!-- Ajoutez d'autres options ici si nécessaire -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="train">Train :</label>
+        <select class="form-control" id="train" name="train">
+          <option value="Disponible">Disponible</option>
+          <option value="Limité">Limité</option>
+          <!-- Ajoutez d'autres options ici si nécessaire -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="mer">Mer :</label>
+        <select class="form-control" id="mer" name="mer">
+          <option value="Non applicable">Non applicable</option>
+          <option value="Disponible">Disponible</option>
+          <!-- Ajoutez d'autres options ici si nécessaire -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="air">Air :</label>
+        <select class="form-control" id="air" name="air">
+          <option value="Disponible avec des restrictions de capacité">Disponible avec des restrictions de capacité</option>
+          <option value="Disponible">Disponible</option>
+          <!-- Ajoutez d'autres options ici si nécessaire -->
+        </select>
+         <label for="source">Source :</label>
+        <input type="text" class="form-control" id="source" name="source" value="Service Logistique Agricole">
+      </div>
+      <div class="form-group">
+        <label for="informations_logistiques">Disponibilité de capacité de transport :</label>
+      </div>
+      <div class="form-group">
+        <label for="capacite_disponible">Capacité disponible :</label>
+        <input type="number" class="form-control" id="capacite_disponible" name="capacite_disponible" value="15" required>
+      </div>
+      <div class="form-group">
+        <label for="types_vehicules">Types de véhicules :</label>
+        <select class="form-control" id="types_vehicules" name="types_vehicules" required multiple>
+          <option value="Camion">Camion</option>
+          <option value="Fourgon">Fourgon</option>
+          <option value="Voiture">Voiture</option>
+          <option value="Moto">Moto</option>
+          <option value="Vélo">Vélo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="itineraire">Itinéraire :</label>
+        <input type="text" class="form-control" id="itineraire" name="itineraire" value="Nationwide" required>
+      </div>
+      <div class="form-group">
+        <label for="etats_livraison">États de livraison :</label>
+      </div>
+      <div class="form-group">
+        <label for="transporteur">Transporteur :</label>
+        <input type="text" class="form-control" id="transporteur" name="transporteur" value="Transporteur XYZ" required readonly>
+        <label for="date1">Date :</label>
+        <input type="date" class="form-control" id="date1" name="date1" value="2023-12-28">
+      </div>
+      <fieldset class="form-group">
+        <label>États de livraison :</label>
+        <div class="form-group">
+          <label for="num_cargaison_1">Numéro de cargaison :</label>
+          <input type="text" class="form-control" id="num_cargaison_1" name="num_cargaison_1" value="CARG123" required>
+        </div>
+        <div class="form-group">
+          <label for="avancement_1">Avancement :</label>
+          <select class="form-control" id="avancement_1" name="avancement_1">
+            <option value="En cours">En cours</option>
+            <option value="En attente de ramassage">En attente de ramassage</option>
+            <option value="Livraison terminée">Livraison terminée</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="delai_livraison_1">Délai de livraison :</label>
+          <input type="date" class="form-control" id="delai_livraison_1" name="delai_livraison_1" value="2023-12-30" required>
+        </div>
+        <div class="form-group">
+          <label for="retard">Retard :</label>
+            <select class="form-control" id="retard" name="retard" required>
+                <option value="true">Oui</option>
+                <option value="false">Non</option>
+            </select>
+        </div>
+      </fieldset>
+      <fieldset class="form-group">
+        <label>États de livraison :</label>
+        <div class="form-group">
+          <label for="num_cargaison_3">Numéro de cargaison :</label>
+          <input type="text" class="form-control" id="num_cargaison_3" name="num_cargaison_3" value="CARG789" required>
+        </div>
+        <div class="form-group">
+          <label for="avancement_3">Avancement :</label>
+          <select class="form-control" id="avancement_3" name="avancement_3">
+            <option value="En cours">En cours</option>
+            <option value="En attente de ramassage">En attente de ramassage</option>
+            <option value="Livraison terminée">Livraison terminée</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="delai_livraison_3">Délai de livraison :</label>
+          <input type="date" class="form-control" id="delai_livraison_3" name="delai_livraison_3" value="2023-12-30" required>
+        </div>
+        <div class="form-group">
+          <label for="retards">Retard :</label>
+          <select class="form-control" id="retards" name="retards" required>
+                <option value="true">Oui</option>
+                <option value="false">Non</option>
+          </select>
+        </div>
+      </fieldset>
+      <div class="form-group">
+        <label for="source1">Source :</label>
+        <input type="text" class="form-control" id="source1" name="source1" value="Suivi de Livraison" required>
+      </div>
+      <button type="submit" class="btn btn-publish">Publier Transporteur</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Laboratoire des Recherches Agricoles</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to bottom, #a1a0a0, #ffffff);
+      color: #333333;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-control {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 5px;
+      color: #333333;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-control[readonly] {
+      background-color: #f9f9f9;
+      border: none;
+      border-radius: 5px;
+      color: #333333;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+      cursor: not-allowed;
+    }
+
+    .btn-publish {
+      background-color: #333333;
+      color: #ffffff;
+      border-radius: 5px;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      margin-top: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center mb-4">Formulaire Laboratoire</h2>
+    <form  method="post">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="id_lab">ID Laboratoire :</label>
+        <input type="text" class="form-control" id="id_lab" name="id_lab" value="LAB-9876" readonly>
+      </div>
+      <div class="form-group">
+        <label for="prevision_meteo">Prévision météorologique :</label>
+        <textarea class="form-control" id="prevision_meteo" name="previsions_meteo" rows="4" required>{{ json_data }}</textarea>
+      </div>
+      <button type="submit" class="btn-publish">Publier Laboratoire</button>
+    </form>
+  </div>
+</body>
+</html>

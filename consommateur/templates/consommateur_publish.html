@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% block title %}Consommateur - publication{% endblock %}
+
+{% block body %}
+    <div>
+        {% include 'sidebar.html' %}
+
+        <div class="md:pl-64 flex flex-col flex-1">
+            <main class="flex-1">
+                <div class="py-6">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <h1 class="text-2xl font-semibold text-gray-900">Consommateur</h1>
+                    </div>
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+                        <div class="py-4">
+                            <form method="post" class="space-y-8 divide-y divide-gray-200">
+                                {% csrf_token %}
+                                <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+                                    <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="consommateur_id" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Consommateur ID</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input value="12345" disabled type="text" name="consommateur_id" id="consommateur_id" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h3 class="text-lg leading-6 font-medium text-gray-900">Préférences alimentaires</h3>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="bio" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Consommation Bio</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="bio" name="bio" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="true">Oui</option>
+                                                    <option value="false">Non</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                         <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="local" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Consommation Locale</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="local" name="local" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="true">Oui</option>
+                                                    <option value="false">Non</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="sans_gluten" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Consommation Sans gluten</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="sans_gluten" name="sans_gluten" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="true">Oui</option>
+                                                    <option value="false">Non</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="sans_gluten" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Consommation Sans gluten</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="sans_gluten" name="sans_gluten" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="true">Oui</option>
+                                                    <option value="false">Non</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="vegetarien" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Végétarien</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="vegetarien" name="vegetarien" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="true">Oui</option>
+                                                    <option value="false">Non</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="vegetalien" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Végétalien</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="vegetalien" name="vegetalien" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="true">Oui</option>
+                                                    <option value="false">Non</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                         <div>
+                                            <h3 class="text-lg leading-6 font-medium text-gray-900">Retour sur les produits (1)</h3>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="produit1" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Produit</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="produit1" name="produit1" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="Pommes biologiques">Pommes biologiques</option>
+                                                    <option value="Pain sans gluten">Pain sans gluten</option>
+                                                    <option value="Yaourt nature">Yaourt nature</option>
+                                                    <option value="Fromage cheddar">Fromage cheddar</option>
+                                                    <option value="Jus d'orange">Jus d'orange</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="avis1" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Avis</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <textarea id="avis1" name="avis1" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md">Très satisfait de la qualité et du goût. Les pommes étaient fraîches et juteuses.</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="evaluation1" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Évaluation</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <select id="evaluation1" name="evaluation1" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                    <option value="5">5 (Très satisfait)</option>
+                                                    <option value="4">4 (Satisfait)</option>
+                                                    <option value="3">3 (Neutre)</option>
+                                                    <option value="2">2 (Insatisfait)</option>
+                                                    <option value="1">1 (Très insatisfait)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                            <label for="date_evaluation1" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Date d'évaluation</label>
+                                            <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                                <input type="date" name="date_evaluation1" id="date_evaluation1" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h3 class="text-lg leading-6 font-medium text-gray-900">Retour sur les produits (2)</h3>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="produit2" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Produit</label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <select id="produit2" name="produit2" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                <option value="Pommes biologiques">Pommes biologiques</option>
+                                                <option value="Pain sans gluten">Pain sans gluten</option>
+                                                <option value="Yaourt nature">Yaourt nature</option>
+                                                <option value="Fromage cheddar">Fromage cheddar</option>
+                                                <option value="Jus d'orange">Jus d'orange</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="avis2" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Avis</label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <textarea id="avis2" name="avis2" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md">Bonne texture, mais le goût est un peu fade.</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="evaluation2" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Évaluation</label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <select id="evaluation2" name="evaluation2" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                                <option value="5">5 (Très satisfait)</option>
+                                                <option value="4">4 (Satisfait)</option>
+                                                <option value="3">3 (Neutre)</option>
+                                                <option value="2">2 (Insatisfait)</option>
+                                                <option value="1">1 (Très insatisfait)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                        <label for="date_evaluation2" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Date d'évaluation</label>
+                                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                            <input type="date" name="date_evaluation2" id="date_evaluation2" class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg leading-6 font-medium text-gray-900">Demande de produits spécifiques</h3>
+                                </div>
+                                 <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="produit_demande1" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Produit demandé</label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <select id="produit_demande1" name="produit_demande1" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            <option value="Légumes biologiques locaux">Légumes biologiques locaux</option>
+                                            <option value="Fromage végétalien">Fromage végétalien</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="motif_demande1" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Motif de la demande</label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <textarea id="motif_demande1" name="motif_demande1" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md">Je soutiens l'agriculture locale et je suis intéressé par des légumes cultivés de manière biologique dans ma région.</textarea>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="produit_demande2" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Produit demandé</label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <select id="produit_demande2" name="produit_demande2" class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md">
+                                            <option value="Légumes biologiques locaux">Légumes biologiques locaux</option>
+                                            <option value="Fromage végétalien">Fromage végétalien</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+                                    <label for="motif_demande2" class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">Motif de la demande</label>
+                                    <div class="mt-1 sm:mt-0 sm:col-span-2">
+                                        <textarea id="motif_demande2" name="motif_demande2" rows="3" class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md">Je soutiens l'agriculture locale et je suis intéressé par des légumes cultivés de manière biologique dans ma région.</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="pt-5">
+                                    <div class="flex justify-end">
+                                        <button type="submit" class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            Publier
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+{% endblock %}
